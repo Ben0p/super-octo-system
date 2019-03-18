@@ -234,6 +234,16 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
   },
   {
+    title: 'Things',
+    icon: 'nb-grid-b',
+    children: [
+      {
+        title: 'IO Modules',
+        link: '/pages/things/io',
+      },
+    ],
+  },
+  {
     title: 'Auth',
     icon: 'nb-locked',
     children: [

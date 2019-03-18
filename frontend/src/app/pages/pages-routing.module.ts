@@ -45,6 +45,10 @@ const routes: Routes = [{
   }, {
     path: 'miscellaneous',
     loadChildren: './miscellaneous/miscellaneous.module#MiscellaneousModule',
+  },
+  {
+    path: 'things',
+    loadChildren: './things/things.module#ThingsModule',
   }, {
     path: 'info',
     loadChildren: './info/info.module#InfoModule',
