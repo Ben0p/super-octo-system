@@ -19,16 +19,24 @@ client = pymongo.MongoClient('mongodb://localhost:27017/')
 db = client['super-octo-system']
 
 
-class io_all(Resource):
+class modules(Resource):
     def get(self):
         # Get all sign data from the signs collection in mongo
-        io = db['io-modules'].find().sort("parent",pymongo.ASCENDING)
+        io = db['modules'].find().sort("parent",pymongo.ASCENDING)
 
         # Return collection as a massive json
         return(jsonify(json.loads(dumps(io))))
 
 
-class io_detail(Resource):
+class outputs(Resource):
+
+    def get(self):
+        # Get all sign data from the signs collection in mongo
+        io = db['outputs'].find().sort("parent",pymongo.ASCENDING)
+
+        # Return collection as a massive json
+        return(jsonify(json.loads(dumps(io))))
+
     def post(self, parent):
 
         # Blank output array
@@ -82,8 +90,8 @@ class io_detail(Resource):
 
 
 # Map URL's to resource classes
-api.add_resource(io_all, "/io")
-api.add_resource(io_detail, "/io/<string:parent>")
+api.add_resource(modules, "/modules")
+api.add_resource(outputs, "/outputs")
 
 # Run flask
 app.run(debug=True, host='0.0.0.0')

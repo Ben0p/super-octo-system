@@ -1,3 +1,9 @@
-<p>
-  io-modules works!
-</p>
+<div class="row">
+  <div class="col-xxxl-3 col-md-6" *ngFor="let output of outputs$">
+    <ngx-status-card [title]="output.thing"
+                     [type]="output.type"
+                     [on]="output.state">
+      <i [ngClass]="output.icon"></i>
+    </ngx-status-card>
+  </div>
+</div>
