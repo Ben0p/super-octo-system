@@ -4,7 +4,8 @@
                      [type]="output.type"
                      [module]="output.parent"
                      [output]="output.output"
-                     [on]="output.state"
+                     [circuit]="output.circuit"
+                     [on]="actualState(output.state, output.circuit)"
                      (valueChange)='setOutput(output.parent, output.output, $event)'>
       <i [ngClass]="output.icon"></i>
     </ngx-status-card>

@@ -35,6 +35,15 @@ export class IoModulesComponent implements OnInit, OnDestroy {
     clearInterval(this.interval);
   }
 
+  actualState(state, circuit) {
+    if (circuit === 'power') {
+      state = !state;
+      return(state);
+    } else {
+      return(state);
+    }
+  }
+
   refreshData() {
     this.outputs.getOutputs().subscribe(
       outputs => this.outputs$ = outputs,

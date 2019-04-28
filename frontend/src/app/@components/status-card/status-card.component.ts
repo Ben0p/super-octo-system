@@ -24,7 +24,11 @@ export class StatusCardComponent {
 
   valueChanged() {
     this.on = !this.on;
-    this.valueChange.emit(this.on);
+    if (this.circuit === 'power') {
+      this.valueChange.emit(!this.on);
+    } else {
+      this.valueChange.emit(this.on);
+    }
   }
 
   @Output() valueChange = new EventEmitter();
@@ -33,5 +37,6 @@ export class StatusCardComponent {
   @Input() on: boolean = true;
   @Input() module: string;
   @Input() output: number;
+  @Input() circuit: string;
 
 }

@@ -48,7 +48,7 @@ def get():
 def read(ip):
 
     # Initialize modbus
-    c = ModbusClient(host=ip, port=502, auto_open=True, timeout=1)
+    c = ModbusClient(host=ip, port=502, auto_open=True, timeout=0.1)
 
     # Read the outputs (Returns None if timeout)
     return(c.read_coils(16, 6))
