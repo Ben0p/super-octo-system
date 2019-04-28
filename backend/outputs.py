@@ -58,7 +58,6 @@ def write(ip, output, state):
     c = ModbusClient(host=ip, port=502, auto_open=True, timeout=1)
     coil = output+16
     c.write_single_coil(coil, state)
-    print("Set output {} to {} on module ip {}".format(output, state, ip))
     
 
 
@@ -79,22 +78,19 @@ def update(module, states):
             upsert = False
         )
 
-        print('Updated output {} to {} for module {} in database'.format(idx, state, module))
-
-
-
 
 def run():
     desired_states = get()
     for module in desired_states:
         if len(module['states']) > 0:
             current_states = read(module['ip'])
-            for desired_state in module['states']:
-                if desired_state['desired'] != current_states[desired_state['output']]:
-                    write(module['ip'], desired_state['output'], desired_state['desired'])
+            if current_states:
+                for desired_state in module['states']:
+                    if desired_state['desired'] != current_states[desired_state['output']]:
+                        write(module['ip'], desired_state['output'], desired_state['desired'])
+                        print('Set output {} to {} on module {}'.format(desired_state['output'], desired_state['desired'], module['parent']))
         current_states = read(module['ip'])
         if current_states:
-            print(current_states)
             update(module['parent'], current_states)
 
 
@@ -102,6 +98,6 @@ def run():
 
 
 if __name__ == '__main__':
+    print('Running...')
     while True:
         run()
-        time.sleep(0.5)

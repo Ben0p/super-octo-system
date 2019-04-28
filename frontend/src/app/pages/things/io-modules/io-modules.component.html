@@ -2,7 +2,10 @@
   <div class="col-xxxl-3 col-md-6" *ngFor="let output of outputs$">
     <ngx-status-card [title]="output.thing"
                      [type]="output.type"
-                     [on]="output.state">
+                     [module]="output.parent"
+                     [output]="output.output"
+                     [on]="output.state"
+                     (valueChange)='setOutput(output.parent, output.output, $event)'>
       <i [ngClass]="output.icon"></i>
     </ngx-status-card>
   </div>

@@ -12,7 +12,7 @@ import copy
 # Initialize flask
 app = Flask(__name__)
 api = Api(app)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 # Initialize mongo
 client = pymongo.MongoClient('mongodb://localhost:27017/')

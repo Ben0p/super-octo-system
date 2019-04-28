@@ -47,9 +47,9 @@ export class OutputService {
   }
 
 
-  postOutputs(module, outputs): Observable<any> {
+  postOutputs(output): Observable<any> {
     return this.http
-      .post<any>(APIurl + 'outputs/' + module, JSON.stringify(outputs), httpOptions)
+      .post<any>(APIurl + 'outputs', JSON.stringify(output), httpOptions)
       .pipe(
         catchError(this.handleError<any>('setOutputs error')),
       );
