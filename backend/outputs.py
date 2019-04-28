@@ -35,6 +35,7 @@ def get():
             )
 
         module_target = {
+            'parent' : module['parent'],
             'ip' :  module['ip'],
             'states' : output_states
         }
@@ -61,11 +62,12 @@ def write(ip, output, state):
     
 
 
-def update(states):
+def update(module, states):
 
     for idx, state in enumerate(states):
         db['outputs'].find_one_and_update(
             {
+                'parent' : module,
                 'output' : idx
             },
             {
@@ -74,8 +76,10 @@ def update(states):
                 'state' : state
                 }
             },
-            upsert = True
+            upsert = False
         )
+
+        print('Updated output {} to {} for module {} in database'.format(idx, state, module))
 
 
 
@@ -88,7 +92,10 @@ def run():
             for desired_state in module['states']:
                 if desired_state['desired'] != current_states[desired_state['output']]:
                     write(module['ip'], desired_state['output'], desired_state['desired'])
-
+        current_states = read(module['ip'])
+        if current_states:
+            print(current_states)
+            update(module['parent'], current_states)
 
 
 
