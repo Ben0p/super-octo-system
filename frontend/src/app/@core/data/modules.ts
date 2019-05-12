@@ -9,12 +9,12 @@ const httpOptions = {
   }),
 };
 
-const APIurl: String = 'http://localhost:5000/';
+const APIurl: String = 'http://10.1.1.106:5000/';
 
 @Injectable({
   providedIn: 'root',
 })
-export class DataService {
+export class ModuleService {
   constructor(private http: HttpClient) {}
 
   private extractData(res: Response) {

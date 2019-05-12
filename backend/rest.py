@@ -15,7 +15,7 @@ api = Api(app)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
 # Initialize mongo
-client = pymongo.MongoClient('mongodb://localhost:27017/')
+client = pymongo.MongoClient('mongodb://10.1.1.103:27017/')
 db = client['super-octo-system']
 
 

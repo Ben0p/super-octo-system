@@ -6,7 +6,7 @@ from pyModbusTCP.client import ModbusClient
 
 
 # Initialize mongo
-client = pymongo.MongoClient('mongodb://10.1.1.94:27017/')
+client = pymongo.MongoClient('mongodb://10.1.1.103:27017/')
 db = client['super-octo-system']
 
 

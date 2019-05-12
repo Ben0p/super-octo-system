@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col-xxxl-3 col-md-6" *ngFor="let output of outputs$">
+    <ngx-status-card [title]="output.thing"
+                     [type]="output.type"
+                     [module]="output.parent"
+                     [output]="output.output"
+                     [circuit]="output.circuit"
+                     [on]="actualState(output.state, output.circuit)"
+                     (valueChange)='setOutput(output.parent, output.output, $event)'>
+      <i [ngClass]="output.icon"></i>
+    </ngx-status-card>
+  </div>
+</div>

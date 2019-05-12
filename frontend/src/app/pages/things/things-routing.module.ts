@@ -3,14 +3,21 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ThingsComponent } from './things.component';
 import { IoModulesComponent } from './io-modules/io-modules.component';
+import { OutputsComponent } from './outputs/outputs.component';
 
 const routes: Routes = [{
   path: '',
-  component: IoModulesComponent,
-  children: [{
-    path: 'io',
-    component: IoModulesComponent,
-  }],
+  component: ThingsComponent,
+  children: [
+    {
+      path: 'modules',
+      component: IoModulesComponent,
+    },
+    {
+      path: 'outputs',
+      component: OutputsComponent,
+    },
+],
 }];
 
 @NgModule({

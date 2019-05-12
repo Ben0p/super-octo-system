@@ -9,7 +9,7 @@ const httpOptions = {
   }),
 };
 
-const APIurl: String = 'http://10.1.1.94:5000/';
+const APIurl: String = 'http://10.1.1.106:5000/';
 
 @Injectable({
   providedIn: 'root',

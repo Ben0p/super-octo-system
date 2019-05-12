@@ -239,7 +239,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: 'IO Modules',
-        link: '/pages/things/io',
+        link: '/pages/things/modules',
+      },
+      {
+        title: 'Outputs',
+        link: '/pages/things/outputs',
       },
     ],
   },
