@@ -52,6 +52,8 @@ export class OutputsComponent implements OnInit, OnDestroy {
   }
 
   setOutput(Module, output, state) {
+    clearInterval(this.interval);
+
     this.outputState.setValue(
       {
         'module' : Module,
@@ -63,6 +65,7 @@ export class OutputsComponent implements OnInit, OnDestroy {
     this.outputs.postOutputs(this.outputState.value).subscribe(results => {
       // console.log(results);
     });
-    this.refreshData();
+
+    this.interval = setInterval(() => {}, 1000);
   }
 }
